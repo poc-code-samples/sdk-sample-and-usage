@@ -1,16 +1,9 @@
-import { NodeTransport } from './httpNode';
-import * as sdk from '@xfonfria/sdk/dist';
+import { Communicator } from './communicator';
 
-
-const getter = sdk.initSDK({
-    name: 'NodeClient',
-    transportFactory: () => {
-        return new NodeTransport();
-    }
-})
+const comm = new Communicator();
 
 const run  = async () => {
-    const data = await getter.getData('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await comm.getData('https://jsonplaceholder.typicode.com/todos/1');
     console.log(data);
 }
 
