@@ -24,7 +24,7 @@ Expected output is like this one:
 ### Web app
 
 ```
-cd webapp && npm run start
+cd webapp && npm i && npm run start
 ```
 
 When finished browse http://localhost:4200 you will see an angular application like this. 
