@@ -1,6 +1,7 @@
+import { CommunicatorService } from './communicator.service';
 import { Component } from '@angular/core';
 import { initSDK } from '@xfonfria/sdk/dist';
-import { WebTransport } from './../shared/httpWeb'
+import { transportFactory } from './util/transport-factory';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,20 +9,10 @@ import { WebTransport } from './../shared/httpWeb'
 })
 export class AppComponent {
 
-  getter = null;
   title = 'Awesome app';
   data = 'initial data';
 
-  constructor() {
-    this.getter = initSDK({
-      name: 'WebGetter',
-      transportFactory: () => {
-        return new WebTransport();
-      }
-    });
-
-    console.log(this.getter);
-  }
+  constructor(private getter: CommunicatorService) {}
 
   ngOnInit() {
     this.getter.getData('https://jsonplaceholder.typicode.com/todos/1')
